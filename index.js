@@ -5,7 +5,7 @@ require('dotenv').config();
 const path = require('path');
 const fs = require('fs');
 const readPkgUp = require('read-pkg-up');
-const {notarize} = require('electron-notarize');
+const { notarize } = require('@electron/notarize');
 const yaml = require('js-yaml');
 // eslint-disable-next-line import/no-unresolved
 const util = require('builder-util');
@@ -21,7 +21,7 @@ const isEnvTrue = value => {
 };
 
 const getAppId = params => {
-	const {packager, outDir} = params;
+	const { packager, outDir } = params;
 
 	// Try getting appId from the packager object
 	const config = packager.info._configuration;
@@ -36,12 +36,12 @@ const getAppId = params => {
 	// This doesn't exist in CI
 	if (fs.existsSync(effectiveConfigPath)) {
 		const buildConfig = fs.readFileSync(effectiveConfigPath);
-		const {appId} = yaml.safeLoad(buildConfig);
+		const { appId } = yaml.safeLoad(buildConfig);
 		return appId;
 	}
 
 	// Try getting appId from `package.json` or from an env var
-	const {packageJson} = readPkgUp.sync();
+	const { packageJson } = readPkgUp.sync();
 	return (packageJson.build && packageJson.build.appId) || process.env.APP_ID;
 };
 

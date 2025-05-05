@@ -1,13 +1,12 @@
 {
-	"name": "electron-builder-notarize",
-	"version": "1.5.1",
-	"description": "Notarize Electron applications using electron-builder",
+	"name": "electron-builder-notarize-next",
+	"version": "1.5.2",
+	"description": "Fork of electron-builder-notarize to notarize electron-builder applications",
 	"license": "MIT",
-	"repository": "https://github.com/karaggeorge/electron-builder-notarize",
+	"repository": "https://github.com/Movie-Analytics/electron-builder-notarize-next",
 	"author": {
-		"name": "George Karagkiaouris",
-		"email": "karaggeorge0@gmail.com",
-		"url": "https://gkaragkiaouris.tech"
+		"name": "Elias Entrup",
+		"email": "elias-dot-entrup@tib.eu"
 	},
 	"peerDependencies": {
 		"electron-builder": ">= 20.44.4"
@@ -32,7 +31,7 @@
 	],
 	"dependencies": {
 		"dotenv": "^8.2.0",
-		"electron-notarize": "^1.1.1",
+		"electron-notarize": "^2.3.0",
 		"js-yaml": "^3.14.0",
 		"read-pkg-up": "^7.0.0"
 	},
