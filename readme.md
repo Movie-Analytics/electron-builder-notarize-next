@@ -1,4 +1,4 @@
-# electron-builder-notarize [![Build Status](https://travis-ci.com/karaggeorge/electron-builder-notarize.svg?branch=master)](https://travis-ci.com/karaggeorge/electron-builder-notarize)
+# electron-builder-notarize-next
 
 > Notarize Electron applications using electron-builder
 

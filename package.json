@@ -15,7 +15,6 @@
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo"
 	},
 	"files": [
 		"index.js",
@@ -36,6 +35,5 @@
 		"read-pkg-up": "^7.0.0"
 	},
 	"devDependencies": {
-		"xo": "^0.24.0"
 	}
 }
