@@ -37,30 +37,21 @@ function getAuthInfo() {
 module.exports = async () => {
 	const options = getAuthInfo();
 
-	if (!options.legacyApiIssuer && !options.legacyApiKey && await isNotaryToolAvailable()) {
-		try {
-			const creds = validateNotaryToolAuthorizationArgs(options);
-			return {
-				...creds,
-				tool: 'notarytool'
-			};
-		} catch (e) {
-			console.error(e);
-		}
-	} else {
-		console.log('notarytool not found, trying legacy.');
+	if (options.legacyApiIssuer) {
+		console.log('WARNING: legacy no longer supported');
 	}
-
-	const creds = validateLegacyAuthorizationArgs({
-		...options,
-		// Backwards compatibility
-		appleApiKey: options.appleApiKey || options.legacyApiKey,
-		appleApiIssuer: options.appleApiIssuer || options.legacyApiIssuer
-	});
-
-	return {
-		...creds,
-		tool: 'legacy',
-		ascProvider: options.teamShortName
-	};
+	
+	if (!await isNotaryToolAvailable()) {
+		console.log('WARNING: notarytool not found; legacy no longer supported')
+	}
+	
+	try {
+		const creds = validateNotaryToolAuthorizationArgs(options);
+		return {
+			...creds,
+			tool: 'notarytool'
+		};
+	} catch (e) {
+		console.error(e);
+	}
 };
